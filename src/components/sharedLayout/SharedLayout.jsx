@@ -6,7 +6,7 @@ const SharedLayout = () => {
     return { color: isActive ? 'red' : 'black' };
   };
   return (
-    <container className={css.container}>
+    <section className={css.container}>
       <header className={css.header}>
         <nav className={css.nav}>
           <NavLink to="/" className={css.link} style={handleActiveStyle}>
@@ -18,7 +18,7 @@ const SharedLayout = () => {
         </nav>
       </header>
       <Outlet />
-    </container>
+    </section>
   );
 };
 export default SharedLayout;
