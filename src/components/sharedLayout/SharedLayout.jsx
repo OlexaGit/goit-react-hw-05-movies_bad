@@ -1,18 +1,18 @@
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import css from './SharedLayout.module.css';
 
 const SharedLayout = () => {
-  const isActive = () => {
-    active ? css.isActive : css.link;
+  const handleActiveStyle = ({ isActive }) => {
+    return { color: isActive ? 'red' : 'black' };
   };
   return (
     <container className={css.container}>
       <header className={css.header}>
         <nav className={css.nav}>
-          <NavLink to="/" className={isActive}>
+          <NavLink to="/" className={css.link} style={handleActiveStyle}>
             Home
           </NavLink>
-          <NavLink to="/movies" className={isActive}>
+          <NavLink to="/movies" className={css.link} style={handleActiveStyle}>
             Movies
           </NavLink>
         </nav>
