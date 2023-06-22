@@ -12,7 +12,7 @@ const orientation = 'horizontal';
 //   return data;
 // };
 
-const getMovies = async () => {
+export const getMovies = async () => {
   const { data } = await axios.get(
     `https://api.themoviedb.org/3/trending/all/day?api_key=${myApiKey}`
   );
@@ -26,9 +26,9 @@ const searchMovies = async query => {
   return data;
 };
 
-const detailsMovies = async query => {
+export const detailsMovies = async id => {
   const { data } = await axios.get(
-    `https://api.themoviedb.org/3/movie/movie_id?api_key=${myApiKey}`
+    `https://api.themoviedb.org/3/movie/movie_${id}?api_key=${myApiKey}`
   );
   return data;
 };
@@ -71,4 +71,4 @@ const reviewsMovies = async query => {
 
 // const myApiKey = 'e4e77b2d83733ec5f4ee2698cbe57afc';
 
-export default getMovies;
+// export default getMovies, detailsMovies;

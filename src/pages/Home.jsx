@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Loader from '../components/Loader/Loader';
-import getMovies from '../components/Api/JsonthemoviedbApi';
+import { getMovies } from '../components/Api/JsonthemoviedbApi';
+import ErrorWrapper from './Error/ErrorWrapper';
+import Info from 'components/Info/Info';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -30,6 +33,16 @@ const Home = () => {
     <main>
       <h1> Trending today</h1>
       {isLoaderVisible && <Loader />}
+      <ErrorWrapper isError={isError}>
+        <ul>
+          {movies.map(({ id, title, name }) => (
+            <li key={id}>
+              <Link to={`movies/:${id}`}>{title || name}</Link>
+            </li>
+          ))}
+        </ul>
+        {/* {totalHits === 0 && <Info />} */}
+      </ErrorWrapper>
     </main>
   );
 };
