@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Outlet, Link, useParams } from 'react-router-dom';
 import { detailsMovies } from '../Api/JsonthemoviedbApi';
 // import Loader from '../components/Loader/Loader';
+import css from './MovieDetails.module.css';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -30,20 +31,25 @@ const MovieDetails = () => {
   console.log(movies);
 
   const { genres } = movies;
-  console.log(movies.backdrop_path);
+  // console.log(movies.backdrop_path);
   return (
     <main>
       <button>Go back</button>
-      <div>
-        <h2>{movies.title}</h2>
-        <p>{`User Score: ${movies.vote_average}`}</p>
-        <h4>Overview</h4>
-        <p>{movies.overview}</p>
-        <h3>Genres</h3>
-        {/* {genres.map(({ name }) => (
+      <div className={css.details}>
+        <img
+          src={`https://image.tmdb.org/t/p/w400${movies.backdrop_path}`}
+          alt=""
+        />
+        <div>
+          <h2>{movies.title}</h2>
+          <p>{`User Score: ${movies.vote_average}`}</p>
+          <h4>Overview</h4>
+          <p>{movies.overview}</p>
+          <h3>Genres</h3>
+          {/* {genres.map(({ name }) => (
           <div>{name}</div>
         ))} */}
-        <img src={movies.backdrop_path} alt="" />
+        </div>
       </div>
       <ul>
         <li>
