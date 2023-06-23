@@ -1,20 +1,10 @@
 import axios from 'axios';
 
-const search = 'transformers';
 const myApiKey = 'e4e77b2d83733ec5f4ee2698cbe57afc';
-const imageType = 'photo';
-const orientation = 'horizontal';
-
-// const getMovies = async (search = '', page = 1) => {
-//   const { data } = await axios.get(
-//     `https://pixabay.com/api/?q=${search}&page=${page}&key=${myApiKey}&image_type=${imageType}&orientation=${orientation}&per_page=${per_page}`
-//   );
-//   return data;
-// };
 
 export const getMovies = async () => {
   const { data } = await axios.get(
-    `https://api.themoviedb.org/3/trending/all/day?api_key=${myApiKey}`
+    `https://api.themoviedb.org/3/trending/movie/day?api_key=${myApiKey}`
   );
   return data;
 };
@@ -27,8 +17,9 @@ const searchMovies = async query => {
 };
 
 export const detailsMovies = async id => {
+  console.log(id);
   const { data } = await axios.get(
-    `https://api.themoviedb.org/3/movie/movie_${id}?api_key=${myApiKey}`
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${myApiKey}`
   );
   return data;
 };

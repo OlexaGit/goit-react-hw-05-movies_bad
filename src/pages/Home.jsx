@@ -37,7 +37,7 @@ const Home = () => {
         <ul>
           {movies.map(({ id, title, name }) => (
             <li key={id}>
-              <Link to={`movies/:${id}`}>{title || name}</Link>
+              <Link to={`movies/${id}`}>{title || name}</Link>
             </li>
           ))}
         </ul>
