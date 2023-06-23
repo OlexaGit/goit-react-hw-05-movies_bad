@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Outlet, Link, useParams } from 'react-router-dom';
 import { detailsMovies } from '../Api/JsonthemoviedbApi';
-// import Loader from '../components/Loader/Loader';
 import css from './MovieDetails.module.css';
 
 const MovieDetails = () => {
   const { id } = useParams();
   const [movies, setMovies] = useState([]);
   const [isError, setIsError] = useState(false);
-  // const [isLoaderVisible, setIsLoaderVisible] = useState(false);
 
   useEffect(() => {
     getMove();
@@ -16,7 +14,6 @@ const MovieDetails = () => {
 
   const getMove = async () => {
     try {
-      // setIsLoaderVisible(true);
       const data = await detailsMovies(id);
       const movies = data;
       setMovies(movies);
@@ -24,14 +21,12 @@ const MovieDetails = () => {
       setIsError(true);
       console.error(error);
     } finally {
-      // setIsLoaderVisible(false);
     }
   };
 
   console.log(movies);
-
   const { genres } = movies;
-  // console.log(movies.backdrop_path);
+
   return (
     <main>
       <button>Go back</button>

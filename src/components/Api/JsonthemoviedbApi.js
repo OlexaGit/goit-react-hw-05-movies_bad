@@ -24,9 +24,9 @@ export const detailsMovies = async id => {
   return data;
 };
 
-const castMovies = async query => {
+const castMovies = async id => {
   const { data } = await axios.get(
-    `https://api.themoviedb.org/3/movie/movie_id/credits?api_key=${myApiKey}`
+    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${myApiKey}`
   );
   return data;
 };
